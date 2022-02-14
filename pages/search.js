@@ -25,9 +25,11 @@ const Search = ({properties}) => {
                 fontSize='lg'
                 justifyContent='center'
                 alignItems='center'
-                onClick={() => setSearchFilters(prevFilters => !prevFilters)}
+                onClick={() => setSearchFilters((prevFilters) => !prevFilters)}
             >
-            <Text>Search Property by Filters</Text>
+            <Text>
+                Search Property by Filters
+            </Text>
             <Icon paddingLeft='2' w='7' as={BsFilter} />
             </Flex>
             {searchFilters && <SearchFilters />}
@@ -35,7 +37,7 @@ const Search = ({properties}) => {
                 Properties {router.query.purpose}
             </Text>
             <Flex flexWrap='wrap'>
-                {properties.map(property => <Property property={property} key={property.id} />)}
+                {properties.map((property) => <Property property={property} key={property.id} />)}
             </Flex>
             {properties.length === 0 && (
                 <Flex justifyContent='center' alignItems='center' flexDirection='column' marginTop='5' marginBottom='5'>
@@ -46,8 +48,6 @@ const Search = ({properties}) => {
         </Box>
     )
 }
-
-export default Search
 
 export async function getServerSideProps({query}){
     const purpose = query.purpose || 'for-rent'
@@ -69,3 +69,5 @@ export async function getServerSideProps({query}){
       }
     }
 }
+
+export default Search
